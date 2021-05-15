@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="package" author="true" classpath="." destdir="E:\Javadoc" doctitle="Javadoc" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" source="1.8" sourcefiles="src/braces/fields/comparator/ComparebyHealth.java" sourcepath="src" splitindex="true" use="true" version="true">
+            <link href="file:/E:/Javadoc/"/>
+        </javadoc>
+    </target>
+</project>
