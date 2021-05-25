@@ -56,7 +56,6 @@ public class ClientConsole {
 	            case "info":
 	                if(userCommand.length == 1) {
 	                  ClientRun.readyToExchange("info","",null);
-	                 
 	                } else
 	                System.out.println("This command doesn't support argument!");
 	                break;
@@ -101,9 +100,10 @@ public class ClientConsole {
 	                System.out.println("Please insert the id");
 	                break;
 	            case "execute_script":
-	                if(userCommand.length != 1){
-	                	
+	                if(userCommand.length == 2 ){
+	                	scriptMode(userCommand[1]);
 	                }
+	                else 
 	                System.out.println("Please insert script_file!");
 	                break;
 	            case "remove_greater":
@@ -240,7 +240,7 @@ public class ClientConsole {
 	                System.out.println("Please insert the id");
 	                break;
 	            case "execute_script":
-	                if(userCommand.length != 1){
+	                if(userCommand.length == 2){
 	                	scriptMode(userCommand[1]);
 	                }
 	                else 

@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.net.BindException;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
@@ -21,7 +22,7 @@ import braces.Exchanger.ClientExchanger;
 
 public class ServerRun {
 	  private static Selector selector = null;
-	  private static int valueOfByteBuffer = 65536;
+	  private static int valueOfByteBuffer =65536;
 	  Handler handler;
 	  public ServerRun(Handler handler) {
 		this.handler = handler;
@@ -33,7 +34,7 @@ public class ServerRun {
 	            ServerSocketChannel socket = ServerSocketChannel.open();
 	            ServerSocket serverSocket = socket.socket();
 	            System.out.println("Server is started...");
-	            serverSocket.bind(new InetSocketAddress("localhost", 8080));
+	            serverSocket.bind(new InetSocketAddress("localhost", 6963));
 	            socket.configureBlocking(false);
 	            int ops = socket.validOps();
 	            SelectionKey selectKy = socket.register(selector, ops, null);  
@@ -64,9 +65,9 @@ public class ServerRun {
 	                    } else if (key.isWritable()) {
 	                    	 SocketChannel client = (SocketChannel) key.channel();  
 	                         ByteBuffer buffer = ByteBuffer.allocate(65536);  
-	                         buffer.clear();	
+	                         clear(buffer);
 	                         buffer.put(serialize(exchangeClass));  
-	                         buffer.flip();
+	                         flip(buffer);
 	                         
 	                         while(buffer.hasRemaining()) {  
 	                        	    client.write(buffer);  
@@ -80,11 +81,19 @@ public class ServerRun {
 	            System.out.println("Can't use this port!");
 	            System.exit(-1);
 	        } catch (IOException e) {
-	            System.out.println("Server.");
+	            System.out.println("Server down.");
 	            System.exit(-1);
 	        }
 	    }
+	  	public static void clear(Buffer buffer)
+	  	{
+	      buffer.clear();
+	  	}
 
+	  	public static void flip(Buffer buffer)
+	  	{
+	  		buffer.flip();
+	  	}
 
 
 	    public byte[] serialize(Object obj) throws IOException {

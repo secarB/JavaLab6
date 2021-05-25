@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.ConnectException;
 import java.net.InetSocketAddress;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 import java.util.NoSuchElementException;
@@ -27,8 +28,8 @@ public class ClientRun {
         {	try 
     		{
 	            System.out.println("Connecting...");
-	            client = SocketChannel.open(new InetSocketAddress("localhost", 8080));
-	            data = ByteBuffer.allocate(valueOfByteBuffer);
+	            client = SocketChannel.open(new InetSocketAddress("localhost", 6963));
+	            data = ByteBuffer.allocate(valueOfByteBuffer);	
 	            System.out.println("Connected");
 	            TimeUnit.MILLISECONDS.sleep(100);
 	            connect = true;
@@ -56,6 +57,15 @@ public class ClientRun {
             }
         }
     }
+	public static void clear(Buffer buffer)
+  	{
+      buffer.clear();
+  	}
+
+  	public static void flip(Buffer buffer)
+  	{
+  		buffer.flip();
+  	}
     public static void writeObject(ClientExchanger testClass) throws IOException, InterruptedException {
     	/* try {
             data = ByteBuffer.allocate(valueOfByteBuffer);
@@ -68,9 +78,9 @@ public class ClientRun {
             start();
             writeObject(testClass);
         }*/
-            ByteBuffer buffer = ByteBuffer.wrap(serialize(testClass));  
-            client.write(buffer);  
-            buffer.clear();  
+            ByteBuffer buffers = ByteBuffer.wrap(serialize(testClass));  
+            client.write(buffers);  
+            ((Buffer)buffers).clear();
 
         }  
 

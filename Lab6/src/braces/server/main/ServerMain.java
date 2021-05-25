@@ -15,8 +15,8 @@ public class ServerMain
     static String fileName ;
     public static void main(String[] args) throws ClassNotFoundException {
         try {
-       //  fileName = args[0];
-        fileName = "E:/test.csv";
+       fileName = args[0];
+       // fileName = "E:/test.csv";
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Please insert file input via command line argument!");
             System.exit(-1);
