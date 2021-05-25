@@ -1,7 +1,7 @@
 package braces.server.commands;
 
-import braces.core.InputChecker;
-import braces.core.CollectionManager;
+import braces.server.core.CollectionManager;
+import braces.server.core.InputChecker;
 /**
  * Class for count greater than height command
  */
@@ -14,13 +14,12 @@ public class CountGreaterThanHeightCommand extends AbstractCommand{
         this.inputChecker = inputChecker;
     }
     @Override
-    public boolean execute(String argument) {
+    public String execute(String argument) {
         if (inputChecker.longValidCheck(argument, (long) 0 , Long.MAX_VALUE)) {
             long height = Long.parseLong(argument);
-            collectionManager.countGreaterThanHeight(height);
-            return true;
+            return collectionManager.countGreaterThanHeight(height);
         }
-        System.out.println("The height value is not in valid range");
-        return false;
+        return "The height value is not in valid range";
+
     }
 }

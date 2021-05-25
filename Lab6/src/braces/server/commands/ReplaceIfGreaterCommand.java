@@ -2,8 +2,9 @@ package braces.server.commands;
 
 import java.util.Scanner;
 
-import braces.core.Asker;
-import braces.core.CollectionManager;
+import braces.server.core.Asker;
+import braces.server.core.CollectionManager;
+import braces.server.fields.SpaceMarine;
 /**
  * Class for replace if greater command
  */
@@ -16,10 +17,8 @@ public class ReplaceIfGreaterCommand extends AbstractCommand{
         this.collectionManager = collectionManager;
     }
     @Override
-    public boolean execute(String argument,Scanner scanner) {
-    	asker.changeScanner(scanner);
-        if (collectionManager.replaceGreater(argument,asker.createSpaceMarine())) return true;
-        System.out.println("Key does not exist");
-        return false;
+    public String execute(String argument,SpaceMarine spaceMarine) {
+        if (collectionManager.replaceGreater(argument, spaceMarine)) return "replaced successful";
+        return("Key does not exist");
     }
 }

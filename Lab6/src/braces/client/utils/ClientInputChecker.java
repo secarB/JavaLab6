@@ -1,11 +1,7 @@
-package braces.core;
+package braces.client.utils;
 
-/**
- * Input checker for program
- */
-public class InputChecker {
-    public InputChecker(){}
-    private  static final double eps = 1E-6;
+public class ClientInputChecker {
+	private  static final double eps = 1E-6;
 
     /**
      * Check the integer value
@@ -43,5 +39,4 @@ public class InputChecker {
             return false;
         }
     }
-
 }

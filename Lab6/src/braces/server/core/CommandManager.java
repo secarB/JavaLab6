@@ -1,8 +1,9 @@
-package braces.core;
+package braces.server.core;
 
 import java.util.Scanner;
 
 import braces.server.commands.*;
+import braces.server.fields.SpaceMarine;
 
 /**
  * Executor of all commands
@@ -46,60 +47,60 @@ public class CommandManager {
         UpdateCommand = updateCommand;
         RemoveLowerCommand = removeLowerCommand;
     }
-    public boolean average()
+    public String average()
     {
         return AverageOfHealthCommand.execute();
     }
 
-    public boolean countGreaterThanHeight(String argument)
+    public String countGreaterThanHeight(String argument)
     {
         return CountGreaterThanHeightCommand.execute(argument);
     }
-    public boolean insert(String argument,Scanner scanner)
+    public String insert(String argument,SpaceMarine spaceMarine)
     {
-        return  InsertCommand.execute(argument,scanner);
+        return  InsertCommand.execute(argument,spaceMarine);
     }
-    public boolean minByHealth()
+    public String minByHealth()
     {
         return MinByHealthCommand.execute();
     }
-    public boolean remove(String argument)
+    public String remove(String argument)
     {
         return RemoveCommand.execute(argument);
     }
-    public boolean removeGreater(Scanner scanner)
+    public String removeGreater(SpaceMarine spaceMarine)
     {
-        return RemoveGreaterCommand.execute(scanner);
+        return RemoveGreaterCommand.execute(spaceMarine);
     }
-    public boolean removeLower(Scanner scanner)
+    public String removeLower(SpaceMarine spaceMarine)
     {
-        return RemoveLowerCommand.execute(scanner);
+        return RemoveLowerCommand.execute(spaceMarine);
     }
-    public boolean replaceIfGreater(String argument,Scanner scanner)
+    public String replaceIfGreater(String argument, SpaceMarine spaceMarine)
     {
-        return ReplaceIfGreaterCommand.execute(argument,scanner);
+        return ReplaceIfGreaterCommand.execute(argument,spaceMarine);
     }
-    public boolean update(String argument,Scanner scanner)
+    public String update(String argument,SpaceMarine spaceMarine)
     {
-        return UpdateCommand.execute(argument,scanner);
+        return UpdateCommand.execute(argument,spaceMarine);
     }
-    public boolean clear()
+    public String clear()
     {
         return ClearCommand.execute();
     }
-    public boolean help(){
+    public String help(){
         return HelpCommand.execute();
     }
-    public boolean info(){
+    public String info(){
         return InfoCommand.execute();
     }
-    public boolean show(){
+    public String show(){
         return ShowCommand.execute();
     }
-    public boolean save(String fileName){
+    public String save(String fileName){
         return SaveCommand.execute(fileName);
     }
-    public boolean exit(){
+    public String exit(){
         return ExitCommand.execute();
     }
 }

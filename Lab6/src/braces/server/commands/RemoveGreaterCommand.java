@@ -2,8 +2,9 @@ package braces.server.commands;
 
 import java.util.Scanner;
 
-import braces.core.Asker;
-import braces.core.CollectionManager;
+import braces.server.core.Asker;
+import braces.server.core.CollectionManager;
+import braces.server.fields.SpaceMarine;
 /**
  * Class for remove greater command
  */
@@ -16,9 +17,8 @@ public class RemoveGreaterCommand extends AbstractCommand{
         this.collectionManager = collectionManager;
     }
     @Override
-    public boolean execute(Scanner scanner) {
-    	asker.changeScanner(scanner);
-        collectionManager.removeGreater(asker.createSpaceMarine());
-        return true;
+    public String execute(SpaceMarine spaceMarine) {
+        collectionManager.removeGreater(spaceMarine);
+        return "remove successful";
     }
 }

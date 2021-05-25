@@ -1,13 +1,13 @@
 package braces.server.commands;
 
-import braces.core.CollectionManager;
+import braces.server.core.CollectionManager;
 /**
  * Class for exit command
  */
 public class ExitCommand extends AbstractCommand{
     @Override
-    public boolean execute() {
+    public String execute() {
         System.exit(0);
-        return true;
+        return "";
     }
 }

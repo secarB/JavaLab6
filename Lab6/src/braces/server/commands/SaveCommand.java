@@ -1,6 +1,6 @@
 package braces.server.commands;
 
-import braces.core.CollectionManager;
+import braces.server.core.CollectionManager;
 /**
  * Class for save command
  */
@@ -11,8 +11,8 @@ public class SaveCommand extends AbstractCommand{
         this.collectionManager = collectionManager;
     }
     @Override
-    public boolean execute(String filename) {
+    public String execute(String filename) {
         collectionManager.save(filename);
-        return true;
+        return "done";
     }
 }

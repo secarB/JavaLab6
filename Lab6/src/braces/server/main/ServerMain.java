@@ -1,7 +1,7 @@
-package braces.main;
+package braces.server.main;
 
-import braces.core.*;
 import braces.server.commands.*;
+import braces.server.core.*;
 
 import java.util.Scanner;
 
@@ -10,13 +10,13 @@ import java.util.Scanner;
  * @author Braces
  * @version 1.0
  */
-public class Main
+public class ServerMain
 {
     static String fileName ;
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
         try {
-        	fileName = args[0];
-         // fileName = "E:/test.csv";
+       //  fileName = args[0];
+        fileName = "E:/test.csv";
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Please insert file input via command line argument!");
             System.exit(-1);
@@ -42,9 +42,9 @@ public class Main
                 new UpdateCommand(collectionManager,asker),
                 new RemoveLowerCommand(collectionManager,asker)
         );
-        Commander commander = new Commander(fileName,new Scanner(System.in),commandManager);
-        System.out.println("Hello");
-        System.out.println("To get started type help to view the commands ");
-        commander.interactiveMode();  
+        
+        Handler handler = new Handler(commandManager);
+        ServerRun server = new ServerRun(handler);
+        server.start();
     }
 }

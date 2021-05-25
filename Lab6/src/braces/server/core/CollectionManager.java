@@ -1,10 +1,10 @@
-package braces.core;
-import braces.fields.*;
-
+package braces.server.core;
 import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
+import braces.server.fields.*;
 
 /**
  *Class to operate with collections
@@ -45,30 +45,34 @@ public class CollectionManager {
     /**
      * Show info of all object in treemap
      */
-    public void show(){
-    	if (map.size() == 0) System.out.println("Collection is empty"); else {
+    public String show(){
+    	String s1 = null;
+    	if (map.size() == 0) return("Collection is empty"); else {
 	        Set<String> keySet = map.keySet();
 	        for (String key : keySet) {
-	            map.get(key).info();
+	            s1 =  s1 + map.get(key).info();
 	        }
     	}
+    	return s1;
     }
 
     /**
      * Print information about the collection
+     * @return 
      */
-    public void info()
+    public String info()
     {
-        System.out.println("Type: treemap \n" +
+        return("Type: treemap \n" +
                 "Date of initialization : " + this.getCreationDate() + "\n" +
                 "Size: " + this.getSize());
     }
 
     /**
      * Print all command can use with the collection
+     * @return 
      */
-    public void help(){
-        System.out.println("help: display help for available commands  \n" +
+    public String help(){
+        return("help: display help for available commands  \n" +
             "info: print information about the collection (type, date of initialization, number of elements, etc.) to standard output \n" +
             "show: display all elements of the collection in string representation to standard output \n" +
             "insert null {element}: add a new element with the given key \n" +
@@ -111,7 +115,9 @@ public class CollectionManager {
         for (String key : keySet) {
             if (map.get(key).getId() == id)
             {
+            	spaceMarine.setId(id);
                 map.put(key,spaceMarine);
+                
                 return true;
             }
         }
@@ -184,18 +190,21 @@ public class CollectionManager {
 
     /**
      * Clears all elements of the collection
+     * @return 
      */
-    public void clear()
+    public String clear()
     {
-        map.clear();
+         map.clear();
+        return "Cleared";
+        
     }
 
     /**
      * Removes object from the collection that has the minimum health value
      */
-    public void minByHealth()
+    public String minByHealth()
     {
-    	if (map.size() == 0) System.out.println("Collection is empty"); else {
+    	if (map.size() == 0) return("Collection is empty"); else {
 	        long health = Long.MAX_VALUE;
 	        String keyy = "";
 	        Set<String> keySet = map.keySet();
@@ -207,7 +216,7 @@ public class CollectionManager {
 	            }
 	        }
 	        map.remove(keyy);
-	        System.out.println("Removed successfully");
+	        return("Removed successfully");
     	}
     }
 
@@ -215,7 +224,7 @@ public class CollectionManager {
      * This method prints the number of elements whose height field value is greater than the given one
      * @param height given height
      */
-    public void countGreaterThanHeight (long height)
+    public String countGreaterThanHeight (long height)
     {
         long res = 0;
         Set<String> keySet = map.keySet();
@@ -224,7 +233,7 @@ public class CollectionManager {
                res ++;
            }
         }
-        System.out.println(res);
+        return Long.toString(res);
     }
 
     /**

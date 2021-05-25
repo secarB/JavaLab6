@@ -1,7 +1,7 @@
 package braces.server.commands;
 
-import braces.core.Asker;
-import braces.core.CollectionManager;
+import braces.server.core.Asker;
+import braces.server.core.CollectionManager;
 /**
  * Class for info command
  */
@@ -13,8 +13,7 @@ public class InfoCommand extends AbstractCommand{
     }
 
     @Override
-    public boolean execute() {
-        collectionManager.info();
-        return true;
+    public String execute() {
+        return collectionManager.info();
     }
 }

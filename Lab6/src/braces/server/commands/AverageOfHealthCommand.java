@@ -1,7 +1,7 @@
 package braces.server.commands;
 
-import braces.core.Asker;
-import braces.core.CollectionManager;
+import braces.server.core.Asker;
+import braces.server.core.CollectionManager;
 /**
  * Class for the get average of health command
  */
@@ -12,8 +12,7 @@ public class AverageOfHealthCommand extends AbstractCommand{
         this.collectionManager = collectionManager;
     }
     @Override
-    public boolean execute() {
-        System.out.println(collectionManager.getAverageOfHealth());
-        return true;
+    public String execute() {
+        return collectionManager.getAverageOfHealth();
     }
 }

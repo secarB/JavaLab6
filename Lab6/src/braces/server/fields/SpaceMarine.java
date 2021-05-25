@@ -1,8 +1,14 @@
-package braces.fields;
+package braces.server.fields;
+
+import java.io.Serializable;
+
+import javax.security.auth.x500.X500Principal;
+
 /**
  * Class space marine
  */
-public class SpaceMarine implements Comparable<SpaceMarine> {
+public class SpaceMarine implements Comparable<SpaceMarine>, Serializable {
+    private static final long serialVersionUID = 1L;
     private long id; //The field value must be greater than 0, The value of this field must be unique, The value of this field must be generated automatically
     private String name; //Can't be null, String can't be empty
     private Coordinates coordinates; //Can't be null
@@ -28,7 +34,7 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
         this.name = name;
         return true;
     }
-    public Coordinates getCoordinates() {
+    public Coordinates  getCoordinates() {
         return coordinates;
     }
     public boolean setCoordinates(Coordinates coordinates) {
@@ -50,22 +56,22 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
     public void setHeight(long height) {
         this.height = height;
     }
-    public java.time.LocalDate getCreationDate() {
-        return creationDate;
+    public String getCreationDate() {
+        return creationDate.toString();
     }
     public void setCreationDate(java.time.LocalDate creationDate) {
         this.creationDate = creationDate;
     }
-    public AstartesCategory getCategory() {
-        return category;
+    public String getCategory() {
+        return category.toString();
     }
     public boolean setCategory(AstartesCategory category) {
         if (category == null) return false;
         this.category = category;
         return true;
     }
-    public MeleeWeapon getMeleeWeapon() {
-        return meleeWeapon;
+    public String getMeleeWeapon() {
+        return meleeWeapon.toString();
     }
     public boolean setMeleeWeapon(MeleeWeapon meleeWeapon) {
         if (meleeWeapon == null) return false;
@@ -80,8 +86,8 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
         this.chapter = chapter;
         return true;
     }
-    public void info() {
-        System.out.println("Id : " + id + "\n" +
+    public String info() {
+        return("Id : " + id + "\n" +
                 "Name : " + name + "\n" +
                 "Coordinates x ¸ y : " + coordinates.getXCoordinate() + ", " + coordinates.getYCoordinate() + "\n" +
                 "Creation date : " + getCreationDate() + "\n" +
@@ -93,7 +99,7 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
                 "Chapter Parent Legion : " + chapter.getParentLegion() + "\n" +
                 "Marines Count : " + chapter.getMarinesCount() + "\n" +
                 "Chapter World : " + chapter.getWorld() + "\n" +
-                "-----------------");
+                "----------------- \n" );
     }
 
     @Override

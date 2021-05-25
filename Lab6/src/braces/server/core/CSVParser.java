@@ -1,6 +1,5 @@
-package braces.core;
+package braces.server.core;
 
-import braces.fields.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
@@ -8,6 +7,8 @@ import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.TreeMap;
+
+import braces.server.fields.*;
 
 /**
  * Class get data from CSV file

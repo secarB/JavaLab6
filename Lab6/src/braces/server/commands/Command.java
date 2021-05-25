@@ -2,12 +2,17 @@ package braces.server.commands;
 
 import java.util.Scanner;
 
+import braces.server.fields.SpaceMarine;
+
 /**
  * Interface for all command class
  */
 public interface Command {
-    boolean execute(String argument);
-    boolean execute();
-    boolean execute(String argument,Scanner scanner);
-    boolean execute(Scanner scanner);
+    String execute(String argument);
+    String execute();
+    String execute(String argument,Scanner scanner);
+
+    String execute(String argument,SpaceMarine spaceMarine);
+    String execute(Scanner scanner);
+    String execute(SpaceMarine spaceMarine);
 }

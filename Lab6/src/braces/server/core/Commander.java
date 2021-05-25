@@ -1,4 +1,4 @@
-package braces.core;
+package braces.server.core;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
@@ -14,7 +14,7 @@ import java.util.Scanner;
  * This class used to get commands and execute them
  */
 public class Commander {
-    private final String outputFile;
+   private final String outputFile;
     private final Scanner userScanner;
     private final HashMap<String, Boolean> inStack = new HashMap<>();
     private final CommandManager commandManager;
@@ -35,7 +35,7 @@ public class Commander {
      * Interactive mode when run program
      * @throws Exception 
      */
-    public void interactiveMode() 
+    /**  public void interactiveMode() 
     {
         System.out.print("* ");
         while (userScanner.hasNextLine())
@@ -67,7 +67,7 @@ public class Commander {
      * @param fileName FileName executing
      * @return true/false if the file is successfully executed
      */
-    private boolean scriptMode(String fileName){
+    /**private boolean scriptMode(String fileName){
 
       System.out.println("Executing script file " + fileName);
         if(inStack.get(fileName) != null){
@@ -106,7 +106,7 @@ public class Commander {
      * @param userCommand command from interactive mode
      * @return true/false if the command is successfully executed
      */
-    public boolean categorizeCommand(String [] userCommand, Scanner fileScanner)
+    /**   public boolean categorizeCommand(String [] userCommand, Scanner fileScanner)
     {
         switch (userCommand[0]) {
             case "help":
@@ -212,5 +212,5 @@ public class Commander {
                 return true;
         }
     }
-    
+    */
 }

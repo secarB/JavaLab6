@@ -1,12 +1,12 @@
-package braces.core;
-import braces.fields.*;
-
+package braces.server.core;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Random;
 import java.util.Scanner;
+
+import braces.server.fields.*;
 
 /**
  * This class use to get info when create a new element
@@ -63,7 +63,6 @@ public class Asker {
         spaceMarine.setChapter(chapterAsker());
         LocalDate date = LocalDate.now();
         spaceMarine.setCreationDate(date);
-        System.out.println("Created sucessfully");
         return spaceMarine;
     }
     public SpaceMarine updateSpaceMarine(long id) {
@@ -78,7 +77,6 @@ public class Asker {
         spaceMarine.setChapter(chapterAsker());
         LocalDate date = LocalDate.now();
         spaceMarine.setCreationDate(date);
-        System.out.println("Created sucessfully");
         return spaceMarine;
 	}
 

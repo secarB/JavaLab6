@@ -1,7 +1,7 @@
 package braces.server.commands;
 
-import braces.core.Asker;
-import braces.core.CollectionManager;
+import braces.server.core.Asker;
+import braces.server.core.CollectionManager;
 /**
  * Class for clear command
  */
@@ -12,8 +12,7 @@ public class ClearCommand extends AbstractCommand {
         this.collectionManager = collectionManager;
     }
     @Override
-    public boolean execute() {
-        collectionManager.clear();
-        return true;
+    public String execute() {
+        return collectionManager.clear();
     }
 }

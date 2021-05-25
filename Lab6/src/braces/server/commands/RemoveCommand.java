@@ -1,7 +1,7 @@
 package braces.server.commands;
 
-import braces.core.Asker;
-import braces.core.CollectionManager;
+import braces.server.core.Asker;
+import braces.server.core.CollectionManager;
 /**
  * Class for remove command
  */
@@ -12,10 +12,10 @@ public class RemoveCommand extends AbstractCommand{
         this.collectionManager = collectionManager;
     }
     @Override
-    public boolean execute(String argument) {
+    public String execute(String argument) {
         int key = Integer.parseInt(argument);
-        if (collectionManager.remove(key)) return true;
-        System.out.println("Key does not exist");
-        return false;
+        if (collectionManager.remove(key)) return "Removed successful";
+        return("Key does not exist");
+
     }
 }

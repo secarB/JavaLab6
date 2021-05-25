@@ -2,8 +2,9 @@ package braces.server.commands;
 
 import java.util.Scanner;
 
-import braces.core.Asker;
-import braces.core.CollectionManager;
+import braces.server.core.Asker;
+import braces.server.core.CollectionManager;
+import braces.server.fields.SpaceMarine;
 /**
  * Class for update command
  */
@@ -16,11 +17,9 @@ public class UpdateCommand extends AbstractCommand{
         this.collectionManager = collectionManager;
     }
     @Override
-    public boolean execute(String argument,Scanner scanner) {
-    	asker.changeScanner(scanner);
+    public String execute(String argument,SpaceMarine spaceMarine) {
         long id = Long.parseLong(argument);
-        if (collectionManager.update(id, asker.updateSpaceMarine(id))) return true;
-        System.out.println("Can't find id:");
-        return false;
+        if (collectionManager.update(id, spaceMarine)) return "Updated successfully";
+        return("Can't find id:");
     }
 }

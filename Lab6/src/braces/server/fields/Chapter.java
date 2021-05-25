@@ -1,9 +1,14 @@
-package braces.fields;
+package braces.server.fields;
+
+import java.io.Serializable;
+
 /**
  * Class chapter
  */
-public class Chapter {
-    private String name; //Can't be null, String can't be empty
+public class Chapter implements Serializable
+{
+    private static final long serialVersionUID = 1L;
+	private String name; //Can't be null, String can't be empty
     private String parentLegion;
     private int marinesCount; //Field value must be greater than 0, Maximum field value: 1000
     private String world; //Can't be null
